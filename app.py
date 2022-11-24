@@ -237,22 +237,22 @@ def Login():
     return render_template('login.html',title = "Login",form=form)
 
 
-# @app.route("/register",methods = ["POST","GET"])
-# def Register():
-#     form  = RegistrationForm()
-#     # if request.method== "POST"
-#     # print(form.email.data,"-----1111111111111111111---",form.username.data,form.password.data)
-#     if form.validate_on_submit():
-#         # print(hello)
-#         # print(form.email.data,"------------------------------------",form.username.data,form.password.data)
-#         hassed_passward = generate_password_hash(form.password.data)
-#         new_user = User(username=form.username.data,email=form.email.data,passsword=hassed_passward)
-#         db.session.add(new_user)
-#         db.session.commit()
-#         return redirect(url_for("Dash_Board"))
-#         # flash(f"accont create for {form.username.data}!")
-#         # return redirect(url_for("Login"))
-#     return render_template('register.html',title="Registraion",form=form)
+@app.route("/register",methods = ["POST","GET"])
+def Register():
+    form  = RegistrationForm()
+    # if request.method== "POST"
+    # print(form.email.data,"-----1111111111111111111---",form.username.data,form.password.data)
+    if form.validate_on_submit():
+        # print(hello)
+        # print(form.email.data,"------------------------------------",form.username.data,form.password.data)
+        hassed_passward = generate_password_hash(form.password.data)
+        new_user = User(username=form.username.data,email=form.email.data,passsword=hassed_passward)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for("Dash_Board"))
+        # flash(f"accont create for {form.username.data}!")
+        # return redirect(url_for("Login"))
+    return render_template('register.html',title="Registraion",form=form)
 
 
 @app.route('/logout',methods=["GET","POST"])
