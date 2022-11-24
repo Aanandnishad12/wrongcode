@@ -13,6 +13,7 @@ from flask_api import status
 import pandas as pd
 import re
 import json
+from flask_migrate import Migrate
 
 # from flask_wtf import FlaskForm
 # from wtforms import StringField, PasswordField, SubmitField
@@ -31,6 +32,7 @@ app.config["SECRET_KEY"]="IMAPROGRAMERALSOMATHMATACIANPHYSICIST"
 
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "Login"
